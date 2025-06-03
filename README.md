@@ -6,7 +6,7 @@ This project focuses on predicting the NBA Most Valuable Player (MVP) using a ma
 ***
 ### Data Sources
 
-The dataset used in this project was obtained through web scraping from **basketball-reference.com**, a reliable source of comprehensive NBA statistics. The scraping process was automated and documented in the *we_scraping.ipynb* notebook file, which collects player statistics and MVP voting results from the 1990-1991 season up to the 2024-2025 season. The data includes various player performance metrics such as points, assists, rebounds, and advanced stats like efficiency ratings. This raw data was then cleaned, processed, and transformed into a structured format suitable for machine learning classification target variable, distinguishing MVPs from non-MVPs across multiple seasons. 
+The dataset used in this project was obtained through web scraping from **basketball-reference.com**, a reliable source of comprehensive NBA statistics. The scraping process was automated and documented in the *web_scraping.ipynb* notebook file, which collects player statistics and MVP voting results from the 1990-1991 season up to the 2024-2025 season. The data includes various player performance metrics such as points, assists, rebounds, and advanced stats like efficiency ratings. This raw data was then cleaned, processed, and transformed into a structured format suitable for machine learning classification target variable, distinguishing MVPs from non-MVPs across multiple seasons. 
 ***
 ### File Description
 
@@ -20,7 +20,7 @@ The dataset used in this project was obtained through web scraping from **basket
 - *data_cleaning*: Preprocesses the scraped NBA data by handling null values and other unnecessary values present in data, and merging player and MVP data.
 - *optimized_xgboost_classifier*: Trains and fine-tunes an XGBoost Classifier using Bayesian Optimization and Genetic Algorithm for feature selection to effectively predict the NBA MVP.
 - *[2024-2025]_scrape_data*: Collects and compiles NBA player statistics for the 2024-2025 season through web scraping for use in MVP prediction.
-- *[2024-2025]_clean_data*: Preprocessed the scraped NBA 2024-2025 season data by cleaning it merging player and team statistics for model prediction.
+- *[2024-2025]_clean_data*: Preprocessed the scraped NBA 2024-2025 season data by cleaning it and merging player and team statistics for model prediction.
 - *[2024-2025]_MVP_prediction*: Uses the optimized XGBoost Classifier model to predict the NBA MVP for the 2024-2025 season based on the cleaned and preprocessed player data.
 
 #### CSVs
@@ -56,5 +56,7 @@ The evaluation of the optimized XGBoost Classifier model for predicting the NBA 
 
 The optimized XGBoost Classifier model demonstrated outstanding predictive accuracy in forecasting the NBA MVP for the 2024-2025 season. The model successfully ranked **Shai Gilgeous-Alexander (Oklahoma City Thunder)** as the season's Most Valuable Player, followed by **Nikola Jokic (Denver Nuggets)** in second place and **Giannis Antetokounmpo (Milwaukee Bucks)** in third, exactly matching the official results of the 2024-2025 NBA MVP voting. This outcome highlights the model's ability to not only identify MVP-caliber players but also accurately reflect real-world voting trends.
 
+#### Feature Selection
 ![Feature Importance](https://github.com/user-attachments/assets/da7e5d29-655d-43e4-8a95-57396e711785)
 
+The feature importance results after applying the Genetic Algorithm to the XGBoost Classifier model reveal that **PTS (Points)** is by far the most dominant predictor of MVP status, with a feature importance score nearing 0.6. This underscores the central role that scoring plays in MVP consideration, as players who consistently generate high point totals are often perceived as the most impactful on the court. **STL (Steals)** and **SRS (Simple Rating System)** follow, reflecting a player's defensive contribution and their team's overall strength, both of which factor into MVP voting. The inclusion of **Pos_PG (Point Guard)** highlights the strategic influence of floor generals who often lead both playmaking and tempo. Other features like **TRB (Total Rebounds)** and **GS (Games Started)** signify consistent on-court presence and all-around contribution, while efficiency metrics such as **eFG% (Effective Field Goal Percentage)**, **FT% (Free Throw Percentage)**, **3P% (Three Point Percentage)** reflect shooting performance. The implications of these results suggest that MVP-caliber players are not only top scorers but also contribute significantly to team success, play crucial leadership roles, and maintain high consistency and efficiency. These are criteria closely aligned with how MVPs are judged in the NBA. This confirms the Genetic Algorithm's success in isolating the most meaningful variables for predictive performance.
